@@ -1,0 +1,27 @@
+{
+  "id",
+  "company": {
+    "id",
+    "name",
+    "ITNnumber",
+    "address",
+    "fone",
+    "fax",
+    "controlHead"
+  },
+  "slpaysbase":{
+    "id",
+    "code",
+    "calcAlg"
+  },
+  "person":{
+    "id",
+    "firstname",
+    "lastname",
+    "accountname",
+    "datedbwork"
+  },
+  "year",
+  "month",
+  "sum"
+}
