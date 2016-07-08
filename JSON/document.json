@@ -1,0 +1,42 @@
+[
+  {
+    "id":1,
+    "firstName":"Petro",
+    "lastName":"Lozinskij",
+    "ShareCount":12,
+    "holderProfit":[
+      {
+        "id":1,
+        "Date":"01-07-2016",
+        "Profit":212.15
+      }],
+    "company":{
+      "id":1,
+      "companyName":"Rivne holod",
+      "ITNnumber":152436855456,
+      "Address":"Rivne",
+      "Fone":"(0362)1235446",
+      "ShareCount":[
+        {
+          "id":1,
+          "Date":"06-07-2016",
+          "Count":1200715
+        }
+      ],
+      "NetProfit":[
+        {
+          "id":1,
+          "Date":"01-07-2016",
+          "Profit":45218
+        }
+      ],
+      "SharePrice":[
+        {
+          "id":1,
+          "Date":"01-07-2016",
+          "Price":212.85
+        }
+      ]
+    }
+  }
+]
