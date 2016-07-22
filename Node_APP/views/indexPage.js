@@ -7,11 +7,17 @@ module.exports = (function () {
     var getPage = function () {
         return '<!DOCTYPE html><html>' +
             getPageHead() +
+            '<div id="slider"></div>' + 
             getShareHoldersTable() +
             getNetProfitCompany() +
             getSharePrice() +
             getNetProfitChartScript() +
-            '</div></div></body></html>';
+            '</div></div>' +
+            '<script>  $( function() { ' +
+            '$( "#slider" ).slider();' +
+            '} );' + 
+            '</script>' +
+            '</body></html>';
     };
 
     var getPageHead = function () {
@@ -27,33 +33,7 @@ module.exports = (function () {
             '</head><body><div class="container"><div class="row">'
     };
 
-    var getShareHoldersTable = function () {
-        var stringData;
-        for (var i = 0; i < dataArr.cerification.length; i++) {
-            stringData += "<tr class='share-holders-table-data'>" +
-                "<td>" + dataArr.cerification[i].ShareHolder[0].firstName + "</td>" +
-                "<td>" + dataArr.cerification[i].ShareHolder[0].lastName + "</td>" +
-                "<td>" + dataArr.cerification[i].date + "</td>" +
-                "<td>" + Math.round(dataArr.companyShareCount / 100 * dataArr.cerification[i].Count ) + "</td>" +
-                "<td>" + dataArr.cerification[i].Count + '\%' +  "</td>" +
-                "<td>" + Math.round(dataArr.cerification[i].Count / 100 * 321132)+ "</td>" +
-                "<td>Dynamics</td>" +
-                "<td>Total earned money</td></tr>";
-        }
-        return  '<section class="share-holders main" id="nav">' +
-                    '<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">' +
-                        '<h2>Share Holders</h2>' +
-                        "<table class='share-holders-table'>" +
-                            "<tr class='share-holders-table-title'>" +
-                            "<td>First Name</td><td>Last Name</td><td>Date of purchases</td>" +
-                            "<td>Count of shares</td><td>Share</td><td>Last month earned</td>" +
-                            "<td>Dynamics</td><td>Total earned money</td></tr>" +
-                            stringData +
-                        "</table>" +
-                    '</div>' +
-                '</section>';
-        
-    }
+
 
     var getNetProfitCompany = function () {        
         return  '<section class="net-profit main">' +
@@ -152,6 +132,7 @@ module.exports = (function () {
     };
 
     return {
-        getPage: getPage
+        getPage: getPage,
+        getNetProfitChartData:getNetProfitChartData
     }
 })();
