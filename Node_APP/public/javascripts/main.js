@@ -1,10 +1,6 @@
 $(function () {
     window.JointStock = (function () {
 
-        var initialize = function () {
-            $.ajax('/getNetProfitChart').done(getChart);
-        };
-
 
         //***************
         //Checkout send
@@ -15,15 +11,6 @@ $(function () {
             window.location.href = "login.html?selectVal=" + select_val;
         };
 
-        //***************
-        //Chart's block's
-        //***************
-
-        var getChart = function (data) {
-            var ctx = document.getElementById("net-profit-chart");
-            var netProfinChart = new Chart(ctx, JSON.parse(JSON.stringify(data)));
-        };
-        
         //TODO: Take only the data needed, not getAllData
         $.ajax({
             type: 'GET',
@@ -40,19 +27,19 @@ $(function () {
 
                         if (val == 1 && newDate.getMonth() == (date.getMonth())) {
                             result.push({
-                                x: newDate.getTime(),
+                                x: dataArr.SharePrice[i].date,
                                 y: dataArr.SharePrice[i].Price
                             });
                         }
                         if (val == 2 && newDate.getFullYear() == date.getFullYear()) {
                             result.push({
-                                x: newDate.getTime(),
+                                x: dataArr.SharePrice[i].date,
                                 y: dataArr.SharePrice[i].Price
                             });
                         }
                         if (val == 3 ) {
                             result.push({
-                                x: newDate.getTime(),
+                                x: dataArr.SharePrice[i].date,
                                 y: dataArr.SharePrice[i].Price
                             });
                         }
@@ -60,34 +47,7 @@ $(function () {
                     }
                     return result;
                 }
-                //TODO: Make date labels readable
-                function renderSharePriceChart (render_param){
-                    ctx = document.getElementById("share-price-chart");
-                    var defaultArr = getDataForSharePrice(render_param);                    
-                    var sortedObject = defaultArr.slice(0);
-                    sortedObject.sort(function(a,b) {
-                        return a.x - b.x;
-                    });
-                    var data = {
-                        type: 'line',                        
-                        data: {
-                            datasets: [{
-                                label: 'Share price',
-                                data: sortedObject
-                            }]
-                        },
-                        options: {
-                            scales: {
-                                xAxes: [{
-                                    type: 'linear',
-                                    position: 'bottom'
-                                }]
 
-                            }
-                        }
-                    };
-                    var SharePriceChart = new Chart(ctx, JSON.parse(JSON.stringify(data)));
-                }
 
                 var getShareHoldersTable = function () {
                     var stringData = '';
@@ -114,16 +74,109 @@ $(function () {
 
                 };
 
+                var getNetProfitChartData = function () {
+                    var netProfitDate = [];
+                    var netProfitData = [];
+                    for (var i = 0; i < dataArr.NetProfit.length; i++) {
+                        netProfitDate.push(dataArr.NetProfit[i].date);
+                        netProfitData.push(dataArr.NetProfit[i].Profit);
+                    }
+
+                    var data = {
+
+                        title: {
+                            text: 'Net profit',
+                            margin: 50
+                        },
+                        xAxis: {
+                            categories: netProfitDate
+                        },
+
+                        series: [{
+                            name: "Net  frofit",
+                            data: netProfitData
+                        }],
+
+                        navigation: {
+                            menuItemStyle: {
+                                fontWeight: 'normal',
+                                background: 'none'
+                            },
+                            menuItemHoverStyle: {
+                                fontWeight: 'bold',
+                                background: 'none',
+                                color: 'black'
+                            }
+                        }
+                    };
+
+                    return data;
+                };
+
+
+                //TODO: Make date labels readable
+                function renderSharePriceChart (render_param){
+                    var defaultArr = getDataForSharePrice(render_param);
+                    var sortedObject = defaultArr.slice(0);
+                    sortedObject.sort(function(a,b) {
+                        return a.x - b.x;
+                    });
+                    var charePriceData = [];
+                    var charePriceDate = [];
+                    for (var i = 0; i < sortedObject.length; i++) {
+                        charePriceDate.push(sortedObject[i].x);
+                        charePriceData.push(sortedObject[i].y);
+                    }
+                    
+                    var data = {
+
+                        title: {
+                            text: 'Share price',
+                            margin: 50
+                        },
+                        xAxis: {
+                            categories: charePriceDate
+                        },
+
+                        series: [{
+                            name: "Share price",
+                            data: charePriceData
+                        }],
+
+                        navigation: {
+                            menuItemStyle: {
+                                fontWeight: 'normal',
+                                background: 'none'
+                            },
+                            menuItemHoverStyle: {
+                                fontWeight: 'bold',
+                                background: 'none',
+                                color: 'black'
+                            }
+                        }
+                    };
+                    return data;
+                }
+
                         //***************
                         //Render charts
                         //***************
 
+
+
+                $('#net-profit-chart').highcharts(getNetProfitChartData());
+
+
+                
                 var select_Val = 1;
-                renderSharePriceChart(1);
+
+                $('#share-price-chart').highcharts(renderSharePriceChart(1));
+
                 $('select#chart-Select').change(function(){
                     select_Val = $("select#chart-Select").val();
-                    renderSharePriceChart(select_Val);
+                    $('#share-price-chart').highcharts(renderSharePriceChart(select_Val));
                 });
+                // getChart();
 
                         //***************
                         //Share holders table
@@ -167,8 +220,7 @@ $(function () {
                     value: 50,
                     min: 0,
                     max: 100,
-                    slide: function( event, ui ) {
-                        console.log ();
+                    slide: function( event, ui ) {                        
                         $( "#amount" ).val( "$" + Math.round((parseInt(ui.value) / 100 * stockBuyData[0].count /100 * stockBuyData[0].totalCount * stockBuyData[0].lastCost)));
                         $(".a, .b, .c, .d").width(ui.value + "%");
                         $('#test1').html(Math.round(parseInt(ui.value) / 100 * stockBuyData[0].count /100 * stockBuyData[0].totalCount) + ' - Count of stocks ');
@@ -180,19 +232,61 @@ $(function () {
                 $('#test2').html(stockBuyData[0].lastCost + ' - Stock price');
                 $( "#amount" ).val( "Total price: $" + Math.round(($( "#slider-range-min" ).slider( "value"))/100 * stockBuyData[0].count /100 * stockBuyData[0].totalCount * stockBuyData[0].lastCost));
 
+                // ********************
+                // render buttons block
+                // ********************
 
-                
+                $('#cabiten-btn').hide();
+                $('#logout-btn').hide();
+
+                if (sessionStorage.getItem("token")) {
+                    $('#cabiten-btn').show();
+                    $('#logout-btn').show();
+                    $('#singUp-btn').hide();
+                }
+
+
 
             }
         });
 
-        initialize();
+        var sendMessage = function () {
+            var first_name = $('input[name="first_name"]').val();
+            var last_name = $('input[name="last_name"]').val();
+            var email = $('input[name="email"]').val();
+            var phone = $('input[name="phone"]').val();
+            var address = $('input[name="address"]').val();
+            var city = $('input[name="city"]').val();
+            var comment = $('input[name="comment"]').val();
+            var date = new Date();
+            $.ajax('/sendMessage', {
+                method: 'POST',
+                data: {
+                    date:date,
+                    first_name:first_name,
+                    last_name:last_name,
+                    email:email,
+                    phone:phone,
+                    address:address,
+                    city:city,
+                    comment:comment                    
+                }
+            }).done(function (data) {});
+        };
+        
+        var logout = function () {
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('user_name');
+            setTimeout(function(){window.location.href = 'index.html'}, 50);
+        };
+        
         
         //TODO: one page scroll have conflict with bootstrap
         //$(".main").onepage_scroll();
         return {
-            getChart:getChart,
-            sendCheckout:sendCheckout
+            sendCheckout:sendCheckout,
+            logout:logout,
+            sendMessage:sendMessage
     }        
     })();
 });

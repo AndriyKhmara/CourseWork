@@ -1,11 +1,94 @@
-body {
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+@font-face{
+    font-family: 'wf_SegoeUILight';
+    src:url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot');
+    src:url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot?#iefix') format('embedded-opentype'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.woff') format('woff'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.ttf') format('truetype'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.svg#web') format('svg');
+    font-weight: normal;
+    font-style: normal;
 }
-.container {
-    background: rgba(255, 255, 255, 0.9);
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Monsterrat/Montserrat-Regular.ttf'), url('../fonts/Monsterrat/Montserrat-Regular.eot'), url('../fonts/Monsterrat/Montserrat-Regular.woff'), url('../fonts/Monsterrat/Montserrat-Regular.woff2');
+}
+
+body {
+    font-family: 'wf_SegoeUILight';
+}
+#section-1, #section-2, #section-3 {
+    background: rgba(255, 255, 255, 1);
 }
 .padding-bottom {
     min-height: 100vh;
+}
+
+/*.trancsparent {*/
+    /*background: transparent;*/
+    /*min-height: 30px;*/
+/*}*/
+.start-forex-block {
+    background: url("../img/main_bg.jpg");
+    min-height: 710px;
+    position: relative;
+    text-align: center;
+    color: whitesmoke;
+}
+.start-forex-block img{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 0 5px;
+
+}
+
+h1 {
+    padding-top: 50px;
+    font-size:3.7em;
+    font-weight:200;
+    color:whitesmoke;
+    text-shadow:1px 1px 0px rgba(0,0,0,0.3);
+}
+p {
+    padding-top: 40px;
+    font-size:1.2em;
+    font-weight:300;
+    line-height:1.8rem;
+    color:whitesmoke;
+    text-shadow:1px 1px 0px rgba(0,0,0,0.3);
+}
+.start-forex-block button {
+    padding-top: 40px;
+    font-family: 'Montserrat';
+    background: transparent;
+    padding: 10px 25px;
+    border: 1px solid whitesmoke;
+    border-radius: 5%;
+    font-weight: 400;
+}
+
+h2 {
+    text-align: center;
+    font-size:3.7em;
+    font-weight:200;
+    color:whitesmoke;
+    text-shadow:1px 1px 0px rgba(0,0,0,0.3);
+}
+
+.well {
+    margin-bottom: 0;
+}
+.container-padding {
+    padding: 0;
+}
+
+
+.aboutUs {
+    background: url('../img/main_bg.jpg');
+    /*background-position: center;*/
+    min-height: 300px;
 }
 
 hr {
@@ -53,8 +136,12 @@ hr {
     transform: translateY(0);
 }
 
-
-
+#chart-Select {
+    margin-bottom: 10px;
+}
+#share-price-chart, #net-profit-chart {
+    height: 70vh;
+}
 
 .share-holders-table {
     margin: 0 auto;
@@ -278,18 +365,7 @@ hr {
     outline:none;
 }
 /* typo */
-h1 {
-    font-size:2.7rem;
-    font-weight:200;
-    color:rgba(0,0,0,0.6);
-    text-shadow:1px 1px 0px rgba(255,255,255,0.3);
-}
-p {
-    font-size:1.2rem;
-    font-weight:300;
-    line-height:1.8rem;
-    color:rgba(0,0,0,0.8);
-}
+
 .credits a {
     position:relative;
     display:inline-block;
@@ -320,7 +396,8 @@ p {
     font-family: 'Exo', sans-serif;
     font-weight:800;
     font-size:4rem;
-    color:#529e0e;
+    color: black;
+    /*color:#529e0e;*/
     background:transparent;
     border:none;
 }
@@ -330,7 +407,8 @@ p {
     font-family: 'Exo', sans-serif;
     font-weight:800;
     font-size:2rem;
-    color:#529e0e;
+    color: black;
+    /*color:#529e0e;*/
     background:transparent;
     border:none;
 }
@@ -341,7 +419,7 @@ div.align-center-text {
 h2.size {
     font-size:4rem;
     color: black;
-    text-align: left;
+    text-align: center;
     padding-left: 5%;
 }
 .select-right {
@@ -358,15 +436,116 @@ h2.size {
     padding-top:5rem;
     text-align:center;
 }
-/*html, body {*/
-    /*height:100%;*/
-    /*background-image:-webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.08)), to(rgba(0,0,0,0.05)));*/
-    /*background-image:-webkit-linear-gradient(top, rgba(0,0,0,0.08), rgba(0,0,0,0.05));*/
-    /*background-image:   -moz-linear-gradient(top, rgba(0,0,0,0.08), rgba(0,0,0,0.05));*/
-    /*background-image:     -o-linear-gradient(top, rgba(0,0,0,0.08), rgba(0,0,0,0.05));*/
-    /*background-image:        linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.05));*/
-    /*background-repeat:no-repeat;*/
-    /*background-size:100% 100%;*/
-    /*background-position:0% 0%;*/
-    /*font-family: 'Source Sans Pro', sans-serif;*/
-/*}*/
+
+#success_message{
+    display: none;
+}
+
+#contactUs legend {
+    text-align: center;
+}
+#contactUs button {
+    text-align: center;
+}
+
+#aboutUs {
+    font-family: "Lato", Helvetica, Arial, sans-serif;
+}
+#about-us-photo img{
+    float: right;
+    padding: 15px;
+    width: 80%;
+}
+#aboutUs h2 {
+    position: relative;
+    font-size: 30px;
+    text-align: left;
+    padding-bottom: 6px;
+}
+
+#aboutUs h2:before {
+    content : "";
+    position: absolute;
+    left    : 0;
+    bottom  : 0;
+    height  : 2px;
+    width   : 8%;
+    background-image: linear-gradient(90deg, rgb(134, 104, 173) 0%, rgb(85, 187, 235) 100%);
+    /*border-bottom: 2px solid white;*/
+}
+
+#aboutUs p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.footer-bg {
+    background-color: whitesmoke;
+    border-radius: 1%;
+}
+
+
+footer ul {
+    float: left;
+    padding-top: 25px;
+    margin-left: -35px;
+}
+
+footer ul li {
+    display: inline;
+    border-right: 1px solid gray;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+footer ul li a{
+    text-decoration: none;
+    color: black
+}
+
+footer p {
+    float: right;
+    margin-top: -15px;
+    padding-right: 15px;
+    color: black;
+}
+
+@media only screen and (max-width : 1200px) {}
+
+@media only screen and (max-width : 1024px) {}
+
+@media only screen and (max-width : 992px) {
+
+}
+
+@media only screen and (max-width : 768px) {
+
+    #amount {
+        font-size: 2em;
+    }
+}
+
+@media only screen and (max-width : 640px) {
+    #section-3 {
+        display: none;
+    }
+    #amount {
+        font-size: 2em;
+    }
+    #about-us-photo {
+        text-align: center;
+    }
+    #about-us-photo img {
+        float: none;
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width : 480px) {
+    #section-3 {
+        display: none;
+    }
+    #amount {
+        font-size: 2em;
+    }
+}
