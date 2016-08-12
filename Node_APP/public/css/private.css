@@ -1,0 +1,48 @@
+@font-face{
+    font-family: 'wf_SegoeUILight';
+    src:url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot');
+    src:url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.eot?#iefix') format('embedded-opentype'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.woff') format('woff'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.ttf') format('truetype'),
+    url('http://i.s-microsoft.com/fonts/Segoe-UI/Cyrillic/Light/latest.svg#web') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    margin:0;
+    color:black;
+    background:#c8c8c8;
+    font-family: 'wf_SegoeUILight';
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+.info-section {
+    background-color: white;
+}
+
+#info-section {
+    display: none;
+}
+.notification {
+    display: none;
+}
+tr, td {
+    padding: 0;
+}
+.radio {
+    float: left;
+}
+#render-table td {
+    max-width: 100px;
+}
+#success_message {
+    display: none;
+}
+#share-Date {
+    float: left;
+}
+.well {
+    margin-top: 20px;
+}

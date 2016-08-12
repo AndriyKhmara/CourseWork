@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "customer_name": "test",
+    "customer_pw": "1",
+    "customer_email": "test@gmail.com",
+    "state": 1
+  },
+  {
+    "id": 2,
+    "customer_name": "Petro",
+    "customer_pw": "1",
+    "customer_email": "Petro@gmail.com",
+    "state": 1
+  },
+  {
+    "id": 3,
+    "customer_name": "master",
+    "customer_pw": "1",
+    "customer_email": "master@gmail.com",
+    "state": 3
+  },
+  {
+    "id": 4,
+    "customer_name": "Vasyl",
+    "customer_pw": "1",
+    "customer_email": "Vasyl@gmail.com",
+    "state": 1
+  },
+  {
+    "id": 5,
+    "customer_name": "Sashko",
+    "customer_pw": "1",
+    "customer_email": "Sashko@gmail.com",
+    "state": 1
+  },
+  {
+    "id": 6,
+    "customer_name": "Petya",
+    "customer_pw": "1",
+    "customer_email": "qqwe@aqwe",
+    "state": 0
+  },
+  {
+    "id": 7,
+    "customer_name": "Sasha",
+    "customer_lastName": "Vasilyev",
+    "customer_pw": "1",
+    "customer_email": "wer@wer",
+    "state": 0
+  },
+  {
+    "id": 8,
+    "customer_name": "Lena",
+    "customer_lastName": "Petrova",
+    "customer_pw": "1",
+    "customer_email": "l@gmail.com",
+    "state": 1
+  }
+]

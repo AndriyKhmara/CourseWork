@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Joint Stock company</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Course work - JointStock company" />
+	<meta name="keywords" content="Course work - JointStock company" />
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="css/login_style.css"/>
+</head>
+<body data-spy="scroll" data-target="#myScrollspy">
+
+<div id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation">
+	<div class="container">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="index.html">
+				<span class="glyphicon glyphicon-fire"></span>
+			</a>
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-menubuilder">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+		</div>
+		<div class="collapse navbar-collapse navbar-menubuilder">
+			<ul class="nav navbar-nav navbar-left">
+				<li>
+					<a href="index.html#section-1" class="hvr-underline-reveal">Share price</a>
+				</li>
+				<li>
+					<a href="index.html#section-2" class="hvr-underline-reveal">Net profit</a>
+				</li>
+				<li>
+					<a href="index.html#section-3" class="hvr-underline-reveal">Buy stock</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="container" id="login-section">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<div class="login-wrap">
+				<div class="login-html">
+					<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+					<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+					<div class="login-form">
+						<div class="sign-in-htm">
+							<div class="group">
+								<label for="login-user" class="label">Username</label>
+								<input id="login-user" type="text" class="input">
+							</div>
+							<div class="group">
+								<label for="login-pass" class="label">Password</label>
+								<input id="login-pass" type="password" class="input" data-type="password">
+							</div>
+							<div class="group">
+								<input id="login-check" type="checkbox" class="check" checked>
+								<label for="login-check"><span class="icon"></span> Keep me Signed in</label>
+							</div>
+							<div class="group">
+								<input type="submit" class="button" value="Sign In" onclick="window.loginJS.loginUser()">
+							</div>
+							<div class="hr"></div>
+							<div class="foot-lnk">
+								<div class="notification">
+									<p></p>
+								</div>
+							</div>
+						</div>
+						<div class="sign-up-htm">
+							<div class="group">
+								<label for="reg-user" class="label">FirstName</label>
+								<input id="reg-user" type="text" class="input">
+							</div>
+							<div class="group">
+								<label for="reg-user" class="label">LastName</label>
+								<input id="reg-lastName" type="text" class="input">
+							</div>
+							<div class="group">
+								<label for="reg-pass" class="label">Password</label>
+								<input id="reg-pass" type="password" class="input" data-type="password">
+							</div>
+							<div class="group">
+								<label for="reg-re-pass" class="label">Repeat Password</label>
+								<input id="reg-re-pass" type="password" class="input" data-type="password">
+							</div>
+							<div class="group">
+								<label for="reg-email" class="label">Email Address</label>
+								<input id="reg-email" type="text" class="input">
+							</div>
+							<div class="group">
+								<input type="submit" class="button" value="Sign Up" onclick="window.loginJS.getCheckout()">
+							</div>
+							<div class="hr"></div>
+							<div class="foot-lnk">
+								<div class="notification">
+									<p></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container info-section"  id="info-section">
+	<div class="row">
+		<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<h2>User information</h2>
+			<div class="table-responsive">
+				<table class="table table-striped" id="render-table"></table>
+			</div>
+			<h2 class="render-old-user">Shareholders information</h2>
+			<div class="table-responsive">
+				<table class="table table-striped" id="render-old-user"></table>
+			</div>
+			<div class="table-responsive">
+				<table class="table table-striped" id="render-earn-history"></table>
+				<b><p id="totel-earned"></p></b>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="javascripts/bgstretcher.js"></script>
+<script type="text/javascript" src="javascripts/login.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$.backstretch([
+			"img/back_1.gif",
+			"img/back_2.gif",
+			"img/back_3.gif"], {duration: 10000, fade: 750});
+	});
+</script>
+</body>
+</html>

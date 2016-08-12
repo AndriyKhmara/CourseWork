@@ -1,0 +1,17 @@
+[
+  {
+    "id": 7,
+    "customer_name": "Petya",
+    "customer_email": "qqwe@aqwe",
+    "select_val": 26.46,
+    "state": "under consideration"
+  },
+  {
+    "id": 8,
+    "customer_name": "Sasha",
+    "customer_lastName": "Vasilyev",
+    "customer_email": "wer@wer",
+    "select_val": 13.44,
+    "state": "under consideration"
+  }
+]
