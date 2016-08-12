@@ -11,11 +11,10 @@ $(function () {
         }).done(function (data) {            
             userInfoRender(data.data, data.dataOld, data.earnhistory, data.state);
         }).fail(function (error) {
-            // TODO:repaire failed bunner;
             faildMessage('Session is time out or login failed');
         });
         var userInfoRender = function (data, dataOld, earnHistory, state) { //users state: 0 - new user, 1 - older than 1 month, 3 - master, 4 - delete user, 5 - didn't authenticate
-            $('#info-section').show();
+
             $('#render-earn-history').hide();
             $('#totel-earned').hide();
             $('.render-old-user').hide();
@@ -23,6 +22,7 @@ $(function () {
 
 
             if (state == 0) {
+                $('#info-section').show();
                 var sT = '<tr>' +
                     '<td>Name</td>' +
                     '<td>Email</td>' +
@@ -40,6 +40,7 @@ $(function () {
                     '<td>' + data[0].state + '</td></tr>';
                 $('#render-table').html(sT);
             } else if (state == 3) {
+                $('#info-section').show();
                 /*
                 *   TODO: WTF is this
                 * */
@@ -127,22 +128,10 @@ $(function () {
                 });
             }
             else if (state == 1) {
-                var sT = '<tr>' +
-                    '<td>Name</td>' +
-                    '<td>Email</td>' +
-                    '<td>Proportion</td>' +
-                    '<td>Count</td>' +
-                    '<td>Costs</td>' +
-                    '<td>State</td>' +
-                    '</tr>' +
-                    '<tr>' +
-                    '<td>' + data[0].name + '</td>' +
-                    '<td>' + data[0].email + '</td>' +
-                    '<td>' + data[0].proportionOfShares + '</td>' +
-                    '<td>' + data[0].count + '</td>' +
-                    '<td>' + data[0].costs + '</td>' +
-                    '<td>' + data[0].state + '</td></tr>';
-                $('#render-table').html(sT);
+                $('.notification').show();
+                $('#notify-message').addClass("alert alert-danger");
+                $('#notify-message').html('Sorry, this page under constraction');
+                pageDoNotWorkMessage();
             }
         };
 
@@ -158,18 +147,28 @@ $(function () {
                     token:sessionStorage.getItem('token')
                 }
             }).done(function (data) {
-                
+                $('.notification').show();
+                $('#notify-message').addClass("alert alert-success");
+                $('#notify-message').html("Data successfully added !");
             });
         };
 
         var deleteUser = function () {
-            $('#notification').show();            
-            $('#notification-text').html("Sorry, this function didn't work yet");
+            $('.notification').show();
+            $('#notify-message').addClass("alert alert-danger");
+            $('#notify-message').html("Sorry, this function didn't work yet");
         }
 
-        var faildMessage = function (error) {
-            $('#notification').show();
-            $('#notification').html('Session is time out or login failed');
+        var faildMessage = function () {
+            $('.notification').show();
+            $('#notify-message').addClass("alert alert-danger");
+            $('#notify-message').html('Session is time out or login failed');
+        };
+
+        var pageDoNotWorkMessage = function () {
+            $('.notification').show();
+            $('#notify-message').addClass("alert alert-danger");
+            $('#notify-message').html('Sorry, this page under constraction');
         };
         
         var logout = function () {

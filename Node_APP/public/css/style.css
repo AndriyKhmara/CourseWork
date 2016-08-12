@@ -497,7 +497,9 @@ footer ul li {
     padding-right: 15px;
     padding-left: 15px;
 }
-
+#cabiten-btn, #logout-btn {
+    display: none;
+}
 footer ul li a{
     text-decoration: none;
     color: black

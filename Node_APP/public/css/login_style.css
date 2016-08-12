@@ -37,6 +37,11 @@ a{color:inherit;text-decoration:none}
 .credits a:hover::after {
 	width:103%;
 }
+#notification {
+	display: none;
+
+
+}
 .login-wrap{
 	width:100%;
 	margin:auto;

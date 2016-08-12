@@ -24,15 +24,7 @@ $(function () {
         var changeStateUser = function () {
             var comment = $('textarea[name="comment"]').val();
 
-            var state = 0;
-
-            if($('input[name="Confirm"]').is(':checked')) {
-                state = 1
-            } else if($('input[name="Decline"]').is(':checked')) {
-                state = 4;
-            }
-
-            
+            var state = $( "#state_val" ).val();
             
             $.ajax('/changeStateUser', {
                 method: 'POST',
@@ -44,7 +36,8 @@ $(function () {
                 }
             }).done(function (data) {
                 window.location.href = 'private.html';                
-        });
+            });
+            window.location.href = 'private.html';
         };
 
         return {

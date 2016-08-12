@@ -18,7 +18,14 @@ $(function () {
 
             $('.notification').hide();
 
-            var select_val = getURLparams(string).selectVal;
+            var select_val = 0;
+
+            try {
+               select_val = getURLparams(string).selectVal;
+            } catch(err){
+                faildRegistrationMessage();
+            }
+
 
             var customer_name = $('#reg-user').val();
             var customer_lastName = $('#reg-lastName').val();
@@ -29,13 +36,6 @@ $(function () {
             var log_name = $('#login-user').val();
             var log_pw = $('#login-pass').val();
             var log_check = $('#login-check').val();
-
-            // console.log(log_name);
-            // console.log(log_pw);
-            // console.log(log_check);
-            //
-            // console.log(customer_pw);
-            // console.log(customer_re_pw);
 
             if (select_val) {
                 if (!log_name && !log_pw) {
@@ -58,7 +58,7 @@ $(function () {
                     }
                 }
             }   else {
-                
+                faildRegistrationMessage();
             }
             
         };
@@ -95,19 +95,28 @@ $(function () {
 
         var successLogin = function (data) {
             $('.notification').show();
-            $('.notification').html('Login success!');
-            setTimeout(function(){window.location.href = 'index.html'}, 1000);
+            $('.notification p').addClass("alert alert-success");
+            $('.notification p').html('Login success!');
+            setTimeout(function(){window.location.href = 'index.html'}, 500);
         };
 
         var successMessage = function (data) {
             $('.notification').show();
-            $('.notification').html('Your order succsessfully added ! Now u can login with your creds and look for order');
+            $('.notification p').addClass("alert alert-success");
+            $('.notification p').html('Your order succsessfully added ! Now u can login with your creds and look for order');
             setTimeout(function(){window.location.href = 'index.html'}, 5000);
         };
         
         var faildMessage = function () {
             $('.notification').show();
-            $('.notification').html('Your login or password are invalid !');
+            $('.notification p').addClass("alert alert-danger");
+            $('.notification p').html('Your login or password are invalid !');
+        };
+
+        var faildRegistrationMessage = function () {
+            $('.notification').show();
+            $('.notification p').addClass("alert alert-danger");
+            $('.notification p').html('Sorry, registration is available only for those who checkout order');
         };
         
         return {

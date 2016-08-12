@@ -310,8 +310,7 @@ module.exports = (function () {
     
     var getStateByName = function (name) {
         for (var i = 0; i < userData.length; i++) {
-            if (userData[i].customer_name === name) {
-                console.log(userData[i].state);
+            if (userData[i].customer_name === name) {                
                 return userData[i].state; 
                 
             }
@@ -321,7 +320,7 @@ module.exports = (function () {
     var getPrivateInformation = function (user_name){
         var result = [];
         for(var i = 0; i < userData.length; i++) {
-
+            
             if (user_name == 'master') { //root user    
                 var renderData = getDataForRenderPrivate("master"); 
                 return {
@@ -331,7 +330,8 @@ module.exports = (function () {
                     dataOld  : renderData.resultOld,
                     earnhistory:renderData.earnHistory                    
                 }
-            } else if (getStateByName(user_name) == 0) {   //state = 0 - means that login user that jast buy shares and didn't get any profit yet
+            } else if (userData[i].customer_name == user_name && getStateByName(user_name) == 0) {   //state = 0 - means that login user that jast buy shares and didn't get any profit yet
+                
                 result.push(getDataForNewUser(user_name));
                 return {
                     succsess    : true,
@@ -339,9 +339,9 @@ module.exports = (function () {
                     data        : result,
                     dataOld     : [],
                     earnhistory : []
-
                 }
-            } else if (getStateByName(user_name) == 1){
+            } else if (userData[i].customer_name == user_name && getStateByName(user_name) == 1){
+                
                 return {
                     succsess : true,
                     state    : userData[i].state,
@@ -424,7 +424,7 @@ module.exports = (function () {
     var getLastName = function (name) {
         for (var i = 0; i < userData.length; i++) {            
             if (userData[i].customer_name == name) {
-                console.log(userData[i].customer_lastName);
+                
                 return userData[i].customer_lastName;
             }
         }  
@@ -439,7 +439,7 @@ module.exports = (function () {
             writeStateHistory(state_hisoty);
             
             var select_val = 0;
-            console.log(data.state);
+            
             if (data.state == 1) {
                 for (var i = 0; i < checkoutData.length; i++) {
                     if (checkoutData[i].customer_name == data.user_name) {

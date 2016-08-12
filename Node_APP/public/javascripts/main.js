@@ -236,12 +236,12 @@ $(function () {
                 // render buttons block
                 // ********************
 
-                $('#cabiten-btn').hide();
-                $('#logout-btn').hide();
+
+
 
                 if (sessionStorage.getItem("token")) {
-                    $('#cabiten-btn').show();
-                    $('#logout-btn').show();
+                    $('#cabiten-btn').css({"display":"block"});
+                    $('#logout-btn').css({"display":"block"});
                     $('#singUp-btn').hide();
                 }
 

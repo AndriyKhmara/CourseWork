@@ -21,11 +21,18 @@ body{
 .info-section {
     background-color: white;
 }
+
+#info-section {
+    display: none;
+}
 .notification {
-    color: rgba(255, 31, 43, 0.9);
+    display: none;
 }
 tr, td {
     padding: 0;
+}
+.radio {
+    float: left;
 }
 #render-table td {
     max-width: 100px;
